@@ -16,10 +16,10 @@ def dice_em(result: list, sep: str = ', ') -> Embed:
             description=f'Wyniki: **{sep.join(result)}**.',
             color=Color.dark_red()
         )
-    
-def choose_em(rzecz) -> Embed:
+
+
+def choose_em(thing) -> Embed:
     return Embed(
-        description=f'Wybieram: **{rzecz}**.',
+        title=f':abcd: {thing}',
         color=Color.blue()
     )
-    
