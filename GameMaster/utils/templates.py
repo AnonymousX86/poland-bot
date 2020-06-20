@@ -49,7 +49,7 @@ def dice_em(result: list, sep: str = ', ') -> Embed:
         )
                                                 
 def ping(p) -> Embed:
-    kolor;
+    kolor = Color.white();
     
     if p < 300:
         kolor = Color.green();   
