@@ -80,4 +80,8 @@ for cog in cogs:
     except Exception as e:
         print(f'{p} {e.__class__.__name__}: {e}')
 
+bot.history = {
+    'last_8ball': ''
+}
+
 bot.run(bot_token())

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from random import randint, choice
 
-from discord import HTTPException
 from discord.ext.commands import Cog, command
 
 from GameMaster.templates.basic import error_em
@@ -75,7 +74,8 @@ class Losowe(Cog):
         elif role:
             possibles = [member for member in ctx.guild.members if role in member.roles]
             if possibles:
-                await ctx.send(embed=member_em(choice(possibles)).set_footer(text=f'Wylosowany(a) z grupy {role.name}.'))
+                await ctx.send(
+                    embed=member_em(choice(possibles)).set_footer(text=f'Wylosowany(a) z grupy {role.name}.'))
             else:
                 await ctx.send(embed=error_em(f'Nie mogę znaleźć nikogo z rolą {role.mention}.'))
         else:
@@ -120,20 +120,48 @@ class Losowe(Cog):
         usage='<pytanie>'
     )
     async def eight_ball(self, ctx):
-        await ctx.send(embed=eight_ball_em(choice([
-            'Jasne że tak',
-            'Może lepiej nie',
-            'Chyba sobie żartujesz',
-            'Też nie wiem',
-            'Lepiej spytać sąsiada',
-            'Admin mówi że tak',
-            'Tak, ale Mikołajowi się to nie spodoba',
-            'Teoretycznie tak, a praktycznie nie',
-            'Trudne pytanie, muszę się chwilę zastanowić',
-            'A co za różnica',
-            'Nie, znaczy tak',
-            'Tak, ale nie chcę wiedzieć skąd to pytanie'
-        ])))
+        while True:
+            result = choice([
+                'Jasne że tak',
+                'Może lepiej nie',
+                'Chyba sobie żartujesz',
+                'Też nie wiem',
+                'Lepiej spytać sąsiada',
+                'Admin mówi że tak',
+                'Tak, ale Mikołajowi się to nie spodoba',
+                'Teoretycznie tak, a praktycznie nie',
+                'Trudne pytanie, muszę się chwilę zastanowić',
+                'A co za różnica',
+                'Nie, znaczy tak',
+                'Tak, ale nie chcę wiedzieć skąd to pytanie',
+                'A nie możesz samemu sobie odpowiedzieć',
+                'Proszę pomóż mi, jestem uwięziony w środku bota',
+                'Nie rozumiem',
+                'Spróbuj jeszcze raz',
+                'Pomyśl',
+                'Idę coś zjeść, będę za 15 minut',
+                'Nie mi oceniać',
+                'Ja też potrzebuję snu',
+                'Proszę przestań się mnie pytać o takie głupoty',
+                'Wciśnij Alt + F4',
+                'Jednorożce, tak to wszystko',
+                'Chyba nie myślisz, że serio pomogę',
+                'A co zrobiłby Jedi',
+                'To morderca',
+                'Mój kontakt mówi, że nie, ale również mówi, że Duda wygra',
+                'Żartujesz... Prawda?',
+                'Lepiej zapytaj się mnie, czy mnie to obchodzi',
+                'Na 100%',
+                'Tak, ale zrób to będąc nawalonym jak tylko potrafisz',
+                'Nie mogę teraz powiedzieć',
+                'Zależy',
+                'To nie jest OK',
+                'Odpowiedź znajdziesz po swojej prawej stronie'
+            ])
+            if result != self.bot.history['last_8ball']:
+                self.bot.history['last_8ball'] = result
+                break
+        await ctx.send(embed=eight_ball_em(result))
 
 
 def setup(bot):
