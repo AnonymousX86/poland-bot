@@ -4,7 +4,7 @@ from random import randint
 from discord import HTTPException
 from discord.ext.commands import Cog, command
 
-from GameMaster.utils.templates import error_em, dice_em
+from GameMaster.utils.templates import ping
 
 
 class Ping(Cog):
@@ -21,4 +21,4 @@ class Ping(Cog):
 
 
 def setup(bot):
-    bot.add_cog(Losowe(bot))
+    bot.add_cog(Ping(bot))
