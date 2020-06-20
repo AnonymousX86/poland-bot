@@ -18,8 +18,8 @@ def dice_em(result: list, sep: str = ', ') -> Embed:
         )
 
 
-def choose_em(thing) -> Embed:
+def choose_em(emoji, thing) -> Embed:
     return Embed(
-        title=f':abcd: {thing}',
+        title=f'{emoji}  {thing}',
         color=Color.blue()
     )
