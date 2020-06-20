@@ -39,7 +39,7 @@ def dice_em(result: list, sep: str = ', ') -> Embed:
     if len(result) == 1:
         return Embed(
             title=':game_die: Rzut kością',
-            description= f'Wynik: **{result}**.',
+            description= f'Wynik: **{result[0]}**.',
             color=Color.dark_red()
         )
     else:
