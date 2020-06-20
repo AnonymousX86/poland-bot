@@ -53,7 +53,7 @@ def ping(p) -> Embed:
     
     if p < 300:
         kolor = Color.green();   
-    elif p >= 300 && p < 1000:
+    elif p >= 300 and p < 1000:
         kolor = Color.orange();
     else:
         kolor = Color.red();
