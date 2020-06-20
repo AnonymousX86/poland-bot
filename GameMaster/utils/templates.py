@@ -44,7 +44,7 @@ def dice_em(result: list, sep: str = ', ') -> Embed:
     else:
         return Embed(
             title=':game_die: Rzut kośćmi',
-            description=f'Wyrzucone wartości: `{sep.join(result}`',
+            description=f'Wyrzucone wartości: `{sep.join(result)}`',
             color=Color.dark_red()
         )
                                                 
