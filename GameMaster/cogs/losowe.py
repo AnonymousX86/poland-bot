@@ -29,9 +29,9 @@ class Losowe(Cog):
             await ctx.send(embed=error_em('Podane wartości muszą być liczbami.'))
         else:
             if k < 4:
-                await ctx.send(embed=error_em('Liczba ścianek musi wynosić więcej niż 4'))
+                await ctx.send(embed=error_em('Liczba ścianek musi wynosić co najmniej 4.'))
             elif x < 1:
-                await ctx.send(embed=error_em('Liczba rzutów nie może wynosić 0'))
+                await ctx.send(embed=error_em('Liczba rzutów musi być dodatnia.'))
             else:
                 result = []
                 for i in range(x):
