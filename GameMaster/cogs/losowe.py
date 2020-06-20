@@ -32,20 +32,15 @@ class Losowe(Cog):
         else:
             if k < 4:
                 await ctx.send(embed=error_em('Liczba ścianek musi wynosić co najmniej 4.'))
-            elif k > 100:
-                await ctx.send(embed=error_em('Liczba ścianek musi wynosić mniej niż 100.'))
-            elif x > 100:
-                await ctx.send(embed=error_em('Liczba rzutów nie może przekraczać 100'))
             elif x < 1:
                 await ctx.send(embed=error_em('Liczba rzutów musi być dodatnia.'))
+            elif k > 100 or x > 100:
+                await ctx.send(embed=error_em('Zbyt duże wartości!'))
             else:
                 result = []
                 for i in range(x):
                     result.append(str(randint(1, k)))
-                try:
-                    await ctx.send(embed=dice_em(result, sep))
-                except HTTPException:
-                    await ctx.send(embed=error_em('Zbyt duże wartości!'))
+                await ctx.send(embed=dice_em(result, sep))
 
     @command(
         name='losowy',
