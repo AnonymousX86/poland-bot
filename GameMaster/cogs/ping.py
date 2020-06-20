@@ -17,7 +17,7 @@ class Ping(Cog):
         aliases=['pong']
     )
     async def ping(self, ctx):
-          await ctx.send(embed=ping(bot.latency))
+          await ctx.send(embed=ping(self.bot.latency))
 
 
 def setup(bot):
