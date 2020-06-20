@@ -48,19 +48,19 @@ def dice_em(result: list, sep: str = ', ') -> Embed:
             color=Color.dark_red()
         )
                                                 
-def ping(ping) {
+def ping(p) -> Embed {
     kolor;
     
-    if ping < 300:
+    if p < 300:
         kolor = Color.green();   
-    else if ping >= 300 && ping < 1000:
+    else if p >= 300 && p < 1000:
         kolor = Color.orange();
     else:
         kolor = Color.red();
     
     return Embed(
         title=':ping_pong: Pong',
-        description: f'Ping bota wynosi {ping}',
+        description: f'Ping bota wynosi {p}',
         color=kolor
     )
 }
