@@ -30,6 +30,10 @@ class Losowe(Cog):
         else:
             if k < 4:
                 await ctx.send(embed=error_em('Liczba ścianek musi wynosić co najmniej 4.'))
+            elif k > 100:
+                await ctx.send(embed=error_em('Kostka może posiadać maksymalnie 100 ścian.'))
+            elif x > 100:
+                await ctx.send(embed=error_em('Nie możesz rzucić kościami więcej niż 100 razy!'))
             elif x < 1:
                 await ctx.send(embed=error_em('Liczba rzutów musi być dodatnia.'))
             else:
