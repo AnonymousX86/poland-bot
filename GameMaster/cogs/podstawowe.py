@@ -26,7 +26,7 @@ class Podstawowe(Cog):
 
     @command(
         name='role',
-        description='Spis ról wraz z ID.'
+        brief='Spis ról wraz z ID.'
     )
     async def role(self, ctx):
         roles_list = [f'{role.id} : {role}\n' for role in ctx.guild.roles]
