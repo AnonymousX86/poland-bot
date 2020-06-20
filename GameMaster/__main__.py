@@ -7,8 +7,8 @@ from discord.ext.commands import Bot, ExtensionNotFound, ExtensionAlreadyLoaded,
     MissingPermissions, BotMissingPermissions
 from nest_asyncio import apply
 
+from GameMaster.templates.basic import error_em
 from GameMaster.utils.database import check_connection
-from GameMaster.utils.templates import error_em
 from settings import bot_token
 
 
@@ -63,7 +63,8 @@ bot.error_msg = error_msg
 cogs = (
     'GameMaster.cogs.warny',
     'GameMaster.cogs.czyszczenie',
-    'GameMaster.cogs.losowe'
+    'GameMaster.cogs.losowe',
+    'GameMaster.cogs.podstawowe'
 )
 for cog in cogs:
     p = '[COGS]'
