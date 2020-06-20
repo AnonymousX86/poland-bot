@@ -4,7 +4,9 @@ from random import randint
 from discord import HTTPException
 from discord.ext.commands import Cog, command
 
-from GameMaster.utils.templates import error_em, dice_em
+from GameMaster.templates.basic import error_em
+from GameMaster.templates.other import member_em
+from GameMaster.templates.random import dice_em
 
 
 class Losowe(Cog):
