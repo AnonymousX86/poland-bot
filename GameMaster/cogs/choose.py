@@ -1,5 +1,5 @@
 #-*- coding: utf-8 -*-
-from random import randint, choice, floor
+from random import random, floor
 
 from discord import HTTPException
 from discord.ext.commands import Cog, command
