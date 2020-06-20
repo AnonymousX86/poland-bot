@@ -35,14 +35,31 @@ def info_em(text='', title=':information_source: Informacja', color=Color.blue()
 
 
 def dice_em(result: list, sep: str = ', ') -> Embed:
-    if len(result) < 8:
+    sep = f'**{sep}**'
+    if len(result) == 1:
         return Embed(
-            title=f':game_die: {sep.join(result)}',
+            title=':game_die: Rzut kością',
+            description= f'Wynik: **{result}**.',
             color=Color.dark_red()
         )
     else:
         return Embed(
-            title=':game_die:',
-            description=sep.join(result),
+            title=':game_die: Rzut kośćmi',
+            description=f'Wyniki: **{sep.join(result)}**.',
             color=Color.dark_red()
         )
+
+
+def ping_em(p: int) -> Embed:
+    if p > 1000:
+        color = Color.red()
+    elif p > 300:
+        color = Color.orange()
+    else:
+        color = Color.green()
+
+    return Embed(
+        title=':ping_pong: Pong',
+        description=f'Ping wynosi **{p}ms**.',
+        color=color
+    )
