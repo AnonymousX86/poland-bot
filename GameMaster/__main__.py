@@ -23,8 +23,8 @@ basicConfig(level=INFO)
 bot = Bot(
     command_prefix='$',
     case_insensitive=False,
+    description='Bot serwera Poland.',
     owner_id=309270832683679745,
-    description='Bot serwera Poland.'
 )
 
 
