@@ -34,9 +34,7 @@ class Purge(Cog):
             if option == 'start':
                 if not purge_on:
                     await ctx.guild.get_channel(self.settings['check_channel_id']).send(
-                        embed=info_em(
-                            'Rozpoczęcie czystki. Proszę napisz dowolną wiadomość na tym kanale.'
-                        ).set_footer(self.settings['purge_started_date'])
+                        embed=info_em('Rozpoczęcie czystki. Proszę napisz dowolną wiadomość na tym kanale.')
                     )
                     purge_enable(gid)
                     self.bot.add_listener(self.purge_listener, 'on_message')
