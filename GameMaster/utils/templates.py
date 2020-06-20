@@ -60,6 +60,6 @@ def ping(p) -> Embed:
     
     return Embed(
         title=':ping_pong: Pong',
-        description: f'Ping bota wynosi {p}',
+        description=f'Ping bota wynosi {p} ms',
         color=kolor
     )
