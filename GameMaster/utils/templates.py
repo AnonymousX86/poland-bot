@@ -48,7 +48,7 @@ def dice_em(result: list, sep: str = ', ') -> Embed:
             color=Color.dark_red()
         )
                                                 
-def ping(p) -> Embed {
+def ping(p) -> Embed:
     kolor;
     
     if p < 300:
@@ -63,4 +63,3 @@ def ping(p) -> Embed {
         description: f'Ping bota wynosi {p}',
         color=kolor
     )
-}
