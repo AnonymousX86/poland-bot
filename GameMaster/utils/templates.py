@@ -35,14 +35,16 @@ def info_em(text='', title=':information_source: Informacja', color=Color.blue()
 
 
 def dice_em(result: list, sep: str = ', ') -> Embed:
-    if len(result) < 8:
+    if len(result) == 1:
         return Embed(
-            title=f':game_die: {sep.join(result)}',
+            title=':game_die: Rzut kością',
+            description= f'Wyrzucono `{sep.join(result)}',
             color=Color.dark_red()
         )
     else:
         return Embed(
-            title=':game_die:',
-            description=sep.join(result),
+            title=':game_die: Rzut kośćmi',
+            description=f'Wyrzucone wartości: `{sep.join(result}`',
             color=Color.dark_red()
         )
+        
