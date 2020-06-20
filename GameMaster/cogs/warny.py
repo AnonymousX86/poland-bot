@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from discord import Forbidden, HTTPException
+from discord import Forbidden, HTTPException, Embed, Color
 from discord.ext.commands import Cog, command, has_permissions, bot_has_permissions
 
+from GameMaster.templates.basic import success_em, error_em, please_wait_em
 from GameMaster.utils.database import *
-from GameMaster.utils.templates import *
 from GameMaster.utils.users import *
 
 
@@ -176,26 +176,6 @@ class Warny(Cog):
                 await msg.edit(embed=success_em(f'Zaktualizowani użytkownicy: **{count}**'))
         else:
             await ctx.send(embed=error_em('Nie podałeś(aś) użytkownika.'))
-
-        # if user_id is None:
-        #     await ctx.send(embed=error_em('Nie podałeś(aś) użytkownika.'))
-        # elif reason is None:
-        #     await ctx.send(embed=error_em('Nie podałeś(aś) powodu.'))
-        # elif len(reason) > 30:
-        #     await ctx.send(embed=error_em('Maksymalna długość powodu ostrzeżenia to **30 znaków**.'))
-        # else:
-        #     if len(user_id) == 22:
-        #         user_id = user_id[3:-1]
-        #     if len(user_id) != 18:
-        #         await ctx.send(embed=error_em('Błędny format komendy.'))
-        #     else:
-        #         user = self.bot.get_user(user_id)
-        #         if user is not None:
-        #             update_warn(user_id, reason)
-        #             await ctx.send(embed=success_em(f'Opis ostrzeżenia dla **{user.name}** został zaktualizowany.'
-        #                                             f'```{reason}```'))
-        #         else:
-        #             await ctx.send(embed=error_em('Nie mogę znaleźć takiego użytkownika.'))
 
     @uwarn.error
     async def uwarn_error(self, ctx, error):
