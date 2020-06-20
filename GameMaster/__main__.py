@@ -63,7 +63,8 @@ bot.error_msg = error_msg
 cogs = (
     'GameMaster.cogs.warny',
     'GameMaster.cogs.czyszczenie',
-    'GameMaster.cogs.losowe'
+    'GameMaster.cogs.losowe',
+    'GameMaster.cogs.podstawowe'
 )
 for cog in cogs:
     p = '[COGS]'
