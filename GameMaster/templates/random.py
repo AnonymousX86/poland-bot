@@ -23,3 +23,10 @@ def choose_em(emoji, thing) -> Embed:
         title=f'{emoji}  {thing}',
         color=Color.blue()
     )
+
+
+def eight_ball_em(answer) -> Embed:
+    return Embed(
+        title=f':8ball:  {answer}',
+        color=Color.from_rgb(19, 22, 24)
+    )
