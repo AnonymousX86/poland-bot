@@ -4,7 +4,7 @@ from random import randint
 from discord import HTTPException
 from discord.ext.commands import Cog, command
 
-from GameMaster.utils.templates import error_em, success_em, dice_em
+from GameMaster.utils.templates import error_em, dice_em
 
 
 class Losowe(Cog):
@@ -26,10 +26,12 @@ class Losowe(Cog):
             k = int(k)
             x = int(x)
         except ValueError:
-            await ctx.send(embed=error_em('Co najmniej jednej błędny argument.'))
+            await ctx.send(embed=error_em('Podane wartości muszą być liczbami.'))
         else:
-            if k < 4 or x < 1:
-                await ctx.send(embed=error_em('Co najmniej jednej błędny argument.'))
+            if k < 4:
+                await ctx.send(embed=error_em('Liczba ścianek musi wynosić więcej niż 4'))
+            else if x < 1:
+                await ctx.send(embed=error_em('Liczba rzutów nie może wynosić 0'))
             else:
                 result = []
                 for i in range(x):
