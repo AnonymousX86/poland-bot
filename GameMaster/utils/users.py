@@ -17,3 +17,12 @@ def check_mention(user_id: str):
         except ValueError:
             pass
     return user_id
+
+
+def translate_status(en_status: str):
+    if en_status == 'dnd':
+        return 'nie przeszkadzać'
+    elif en_status == 'idle':
+        return 'zaraz wracam'
+    else:
+        return en_status
