@@ -86,7 +86,7 @@ class Losowe(Cog):
         brief='Pomaga w wyborze.',
         description='Wybiera spomiędzy wprowadzonych rzeczy.',
         help='Oddzielaj pozycje przecinkami.',
-        usage='[coś 1], [coś 2], ... [coś n]'
+        usage='<coś 1>, <coś 2>, ... [coś n]'
     )
     async def wybierz(self, ctx, *, things=None):
         if not things:
