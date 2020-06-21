@@ -65,12 +65,20 @@ class Purge(Cog):
 
             elif option == 'update':
                 if purge_on:
+                    msg = await ctx.send(embed=please_wait_em())
                     inactive = 0
-                    for member in ctx.guild.members:
+                    for index, member in enumerate(ctx.guild.members):
                         if not member.bot:
                             if active_role not in member.roles:
                                 await member.add_roles(inactive_role, reason='Czystka')
-                    await ctx.send(embed=success_em(f'Dodane role `@nieaktywny`: **{inactive}**.'))
+                                inactive += 1
+                                print(f'Added to: {member}')
+                        if index % 10 == 0:
+                            await msg.edit(embed=please_wait_em(
+                                f'({inactive})'
+                                f'**{len(ctx.guild.members) // index}%**'
+                            ))
+                    await msg.edit(embed=success_em(f'Dodane role `@nieaktywny`: **{inactive}**.'))
                 else:
                     await ctx.send(embed=error_em('Czystka nie jest włączona lub błąd ustawień.'))
 
@@ -108,7 +116,12 @@ class Purge(Cog):
         if message.channel.id == self.settings['check_channel_id']:
             try:
                 await message.guild.get_member(message.author.id).add_roles(
-                    message.guild.get_role(self.settings['active_role_id'])
+                    message.guild.get_role(self.settings['active_role_id']),
+                    reason=f'Napisał(a) na kanale {message.guild.get_channel(self.settings["check_channel_id"]).name}'
+                )
+                await message.guild.get_member(message.author.id).remove_roles(
+                    message.guild.get_role(self.settings['active_role_id']),
+                    reason=f'Napisał(a) na kanale {message.guild.get_channel(self.settings["check_channel_id"]).name}'
                 )
             except HTTPException:
                 await message.channel.send(embed=error_em(f'Nie mogę zatwierdzić **{message.author.name}**.'))
