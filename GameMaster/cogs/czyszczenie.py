@@ -72,7 +72,7 @@ class Purge(Cog):
                             if active_role not in member.roles:
                                 await member.add_roles(inactive_role, reason='Czystka')
                                 inactive += 1
-                                print(f'Added to: {member}')
+                                print(f'[PURGE] Inactive: {member}')
                         if index % 10 == 0:
                             await msg.edit(embed=please_wait_em(
                                 f'({inactive})'
@@ -123,6 +123,7 @@ class Purge(Cog):
                     message.guild.get_role(self.settings['active_role_id']),
                     reason=f'Napisał(a) na kanale {message.guild.get_channel(self.settings["check_channel_id"]).name}'
                 )
+                print(f'[PURGE] Active: {message.author}')
             except HTTPException:
                 await message.channel.send(embed=error_em(f'Nie mogę zatwierdzić **{message.author.name}**.'))
 
