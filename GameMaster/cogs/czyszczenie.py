@@ -24,6 +24,7 @@ class Purge(Cog):
         usage='[opcja]'
     )
     async def purge(self, ctx, option='start'):
+        option = option.lower()
         if option in ['start', 'status', 'update', 'stop']:
             gid = ctx.guild.id
             self.settings = purge_settings(gid)
@@ -38,6 +39,10 @@ class Purge(Cog):
                     )
                     purge_enable(gid)
                     self.bot.add_listener(self.purge_listener, 'on_message')
+                    await ctx.send(embed=success_em(
+                        f'Czystka włączona na kanale'
+                        f' {ctx.guild.get_channel(self.settings["check_channel_id"]).mention}.'
+                    ))
                 else:
                     await ctx.send(embed=error_em('Czystka jest już włączona lub błąd ustawień.'))
 
@@ -77,8 +82,7 @@ class Purge(Cog):
                     for member in ctx.guild.members:
                         if inactive_role in member.roles:
                             try:
-                                pass
-                                # await member.kick(reason='Czystka')
+                                await member.kick(reason='Czystka')
                             except Forbidden or HTTPException:
                                 unable += 1
                             else:
