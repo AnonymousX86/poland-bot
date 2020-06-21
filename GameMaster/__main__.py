@@ -8,7 +8,7 @@ from discord.ext.commands import Bot, ExtensionNotFound, ExtensionAlreadyLoaded,
 from nest_asyncio import apply
 
 from GameMaster.templates.basic import error_em
-from GameMaster.utils.database import check_connection
+from GameMaster.utils.database.basic import check_connection
 from settings import bot_token
 
 
