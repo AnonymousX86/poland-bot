@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from random import randint, choice
+from random import randint, choice, seed
 
 from discord.ext.commands import Cog, command
 
 from GameMaster.templates.basic import error_em
 from GameMaster.templates.other import member_em
-from GameMaster.templates.random import dice_em, choose_em, eight_ball_em
+from GameMaster.templates.random import dice_em, choose_em, eight_ball_em, rate_em
 
 
 class Losowe(Cog):
@@ -173,6 +173,25 @@ class Losowe(Cog):
                     self.bot.history['last_8ball'] = result
                     break
                 await ctx.send(embed=eight_ball_em(result))
+
+    @command(
+        name='rate',
+        brief='Ocenia przedmiot',
+        usage='<przedmiot>'
+    )
+    async def rate(self, ctx, *, arg=None):
+        if arg is None:
+            await ctx.send(embed=error_em("Musisz podać rzecz do ocenienia!"))
+        else:
+            seed(arg)
+            ocena = randint(1, 10)
+
+            stars = ''
+
+            for _ in range(ocena):
+                stars += ":star:"
+
+            await ctx.send(embed=rate_em(ocena, stars, arg))
 
 
 def setup(bot):

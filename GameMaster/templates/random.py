@@ -30,3 +30,14 @@ def eight_ball_em(answer) -> Embed:
         title=f':8ball:  {answer}',
         color=Color.from_rgb(19, 22, 24)
     )
+
+def rate_em(rate, stars, thing) -> Embed:
+    embed = Embed(
+        title=":star: Ocena",
+        description=f"Oceniam {thing} na {rate}/10",
+        color=Color.orange()
+    )
+
+    embed.add_field(name="Gwiazdki", value=stars)
+
+    return embed
