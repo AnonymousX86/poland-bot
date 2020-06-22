@@ -119,7 +119,7 @@ class Losowe(Cog):
         brief='Kula tobie pomoże.',
         usage='<pytanie>'
     )
-    async def eight_ball(self, ctx):
+    async def eight_ball(self, ctx, *, arg=None):
         while True:
             result = choice([
                 'Jasne że tak',
@@ -161,7 +161,18 @@ class Losowe(Cog):
             if result != self.bot.history['last_8ball']:
                 self.bot.history['last_8ball'] = result
                 break
-        await ctx.send(embed=eight_ball_em(result))
+
+            if arg is None:
+                await ctx.send(embed=error_em("Nie podałeś/aś pytania"))
+                return
+            elif not arg.endswith('?'):
+                await ctx.send(embed=error_em("Pytania kończą się na `?`"))
+                return
+            else:
+                if result != self.bot.history['last_8ball']:
+                    self.bot.history['last_8ball'] = result
+                    break
+                await ctx.send(embed=eight_ball_em(result))
 
 
 def setup(bot):
