@@ -6,7 +6,7 @@ warn_roles_ids = {
 }
 
 
-def check_mention(user_id: str):
+def check_mention(user_id: str) -> int or str:
     if len(user_id) == 21:
         user_id = user_id[2:-1]
     elif len(user_id) == 22:
@@ -19,7 +19,7 @@ def check_mention(user_id: str):
     return user_id
 
 
-def translate_status(en_status: str):
+def translate_status(en_status: str) -> str:
     if en_status == 'dnd':
         return 'nie przeszkadzać'
     elif en_status == 'idle':

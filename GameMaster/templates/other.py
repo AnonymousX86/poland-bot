@@ -4,7 +4,7 @@ from discord import Embed, Color, Member
 from GameMaster.utils.users import translate_status
 
 
-def member_em(member: Member):
+def member_em(member: Member) -> Embed:
     return Embed(
         title=str(member),
         color=member.color
