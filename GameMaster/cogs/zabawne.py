@@ -18,11 +18,13 @@ class Zabawne(Cog):
              ' "Czy powinienem (...) ?".',
         usage='<pytanie>'
     )
-    async def eight_ball(self, ctx, *, arg=None):
-        if not arg:
-            await ctx.send(embed=error_em('Nie podałeś/aś pytania'))
-        elif not arg.endswith('?'):
-            await ctx.send(embed=error_em('Pytania kończą się na `?`'))
+    async def eight_ball(self, ctx, *, question=None):
+        if not question:
+            await ctx.send(embed=error_em('Nie podałeś(aś) pytania.'))
+        elif not question.endswith('?'):
+            await ctx.send(embed=error_em('Pytania kończą się znakiem zapytania.'))
+        elif len(question) < 10:
+            await ctx.sedn(embed=error_em('Pytanie jest zbyt krótkie.'))
         else:
             while True:
                 result = choice([
