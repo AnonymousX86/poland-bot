@@ -5,9 +5,9 @@ from os import getenv
 load_dotenv()
 
 
-def bot_token() -> str:
+def get_bot_token() -> str:
     return getenv('BOT_TOKEN')
 
 
-def db_url() -> str:
+def get_db_url() -> str:
     return getenv('DATABASE_URL')

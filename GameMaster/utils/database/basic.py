@@ -4,7 +4,7 @@ from typing import Tuple
 
 from psycopg2 import connect
 
-from settings import db_url
+from settings import get_db_url
 
 
 def now():
@@ -14,7 +14,7 @@ def now():
 def execute(query: str, args=None) -> Tuple[Tuple]:
     if args is None:
         args = []
-    with connect(db_url(), sslmode='require') as conn:
+    with connect(get_db_url(), sslmode='require') as conn:
         cur = conn.cursor()
         cur.execute(query, args)
         if query.startswith('SELECT'):
