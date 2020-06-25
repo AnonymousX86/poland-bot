@@ -57,10 +57,11 @@ if __name__ == '__main__':
         bot.error_msg = error_msg
 
         for cog in [f'GameMaster.cogs.{cog}' for cog in [
-            'warny',
-            'czyszczenie',
+            'czystka',
             'losowe',
             'podstawowe',
+            'poziomy',
+            'warny',
             'zabawne'
         ]]:
             p = '[Cogs]'
