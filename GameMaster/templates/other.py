@@ -17,3 +17,11 @@ def member_em(member: Member):
     ).set_thumbnail(
         url=member.avatar_url
     )
+
+
+def warns_em(warns: str) -> Embed:
+    return Embed(
+        title=':orange_book: Lista ostrzeżeń',
+        description=warns,
+        color=Color.gold()
+    )
