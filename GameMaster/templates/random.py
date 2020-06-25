@@ -30,3 +30,14 @@ def eight_ball_em(answer) -> Embed:
         title=f':8ball:  {answer}',
         color=Color.from_rgb(19, 22, 24)
     )
+
+
+def rate_em(thing, rate) -> Embed:
+    return Embed(
+        title=':thumbsup: Dobre' if rate >= 5 else ':thumbsdown: Słabe',
+        description=f'Oceniam **{thing}** na **{rate}/10**.',
+        color=Color.orange()
+    ).add_field(
+        name='\u200b',
+        value=':star: ' * rate
+    )

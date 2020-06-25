@@ -5,7 +5,7 @@ from discord.ext.commands import Cog, command
 
 from GameMaster.templates.basic import error_em
 from GameMaster.templates.other import member_em
-from GameMaster.templates.random import dice_em, choose_em, eight_ball_em
+from GameMaster.templates.random import dice_em, choose_em
 
 
 class Losowe(Cog):
@@ -85,7 +85,7 @@ class Losowe(Cog):
         name='wybierz',
         brief='Pomaga w wyborze.',
         description='Wybiera spomiędzy wprowadzonych rzeczy.',
-        help='Oddzielaj pozycje przecinkami.',
+        help='Oddzielaj pozycje przecinkami ze spacją. (", ")',
         usage='<coś 1>, <coś 2>, ... [coś n]'
     )
     async def wybierz(self, ctx, *, things=None):
@@ -100,7 +100,9 @@ class Losowe(Cog):
 
     @command(
         name='moneta',
-        brief='Rzuca monetą.'
+        brief='Rzuca monetą.',
+        description='Istnieje szansa 0,9%, że moneta stanie na krawędzi oraz 0,1%, że zniknie.'
+                    ' Zgodnie z założeniami fizyki kwantowej.'
     )
     async def moneta(self, ctx):
         lot = randint(1, 1000)
@@ -113,55 +115,6 @@ class Losowe(Cog):
         else:
             result = [':arrow_heading_up:', 'Reszka']
         await ctx.send(embed=choose_em(result[0], result[1]))
-
-    @command(
-        name='8ball',
-        brief='Kula tobie pomoże.',
-        usage='<pytanie>'
-    )
-    async def eight_ball(self, ctx):
-        while True:
-            result = choice([
-                'Jasne że tak',
-                'Może lepiej nie',
-                'Chyba sobie żartujesz',
-                'Też nie wiem',
-                'Lepiej spytać sąsiada',
-                'Admin mówi że tak',
-                'Tak, ale Mikołajowi się to nie spodoba',
-                'Teoretycznie tak, a praktycznie nie',
-                'Trudne pytanie, muszę się chwilę zastanowić',
-                'A co za różnica',
-                'Nie, znaczy tak',
-                'Tak, ale nie chcę wiedzieć skąd to pytanie',
-                'A nie możesz samemu sobie odpowiedzieć',
-                'Proszę pomóż mi, jestem uwięziony w środku bota',
-                'Nie rozumiem',
-                'Spróbuj jeszcze raz',
-                'Pomyśl',
-                'Idę coś zjeść, będę za 15 minut',
-                'Nie mi oceniać',
-                'Ja też potrzebuję snu',
-                'Proszę przestań się mnie pytać o takie głupoty',
-                'Wciśnij Alt + F4',
-                'Jednorożce, tak to wszystko',
-                'Chyba nie myślisz, że serio pomogę',
-                'A co zrobiłby Jedi',
-                'To morderca',
-                'Mój kontakt mówi, że nie, ale również mówi, że Duda wygra',
-                'Żartujesz... Prawda?',
-                'Lepiej zapytaj się mnie, czy mnie to obchodzi',
-                'Na 100%',
-                'Tak, ale zrób to będąc nawalonym jak tylko potrafisz',
-                'Nie mogę teraz powiedzieć',
-                'Zależy',
-                'To nie jest OK',
-                'Odpowiedź znajdziesz po swojej prawej stronie'
-            ])
-            if result != self.bot.history['last_8ball']:
-                self.bot.history['last_8ball'] = result
-                break
-        await ctx.send(embed=eight_ball_em(result))
 
 
 def setup(bot):
