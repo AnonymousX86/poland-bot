@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from random import randint, choice, seed
+from random import randint, choice
 
 from discord.ext.commands import Cog, command
 
 from GameMaster.templates.basic import error_em
 from GameMaster.templates.other import member_em
-from GameMaster.templates.random import dice_em, choose_em, eight_ball_em, rate_em
+from GameMaster.templates.random import dice_em, choose_em
 
 
 class Losowe(Cog):
