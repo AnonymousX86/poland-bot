@@ -85,7 +85,7 @@ class Losowe(Cog):
         name='wybierz',
         brief='Pomaga w wyborze.',
         description='Wybiera spomiędzy wprowadzonych rzeczy.',
-        help='Oddzielaj pozycje przecinkami.',
+        help='Oddzielaj pozycje przecinkami ze spacją. (", ")',
         usage='<coś 1>, <coś 2>, ... [coś n]'
     )
     async def wybierz(self, ctx, *, things=None):
@@ -100,7 +100,9 @@ class Losowe(Cog):
 
     @command(
         name='moneta',
-        brief='Rzuca monetą.'
+        brief='Rzuca monetą.',
+        description='Istnieje szansa 0,9%, że moneta stanie na krawędzi oraz 0,1%, że zniknie.'
+                    ' Zgodnie z założeniami fizyki kwantowej.'
     )
     async def moneta(self, ctx):
         lot = randint(1, 1000)
