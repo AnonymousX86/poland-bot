@@ -24,7 +24,7 @@ class Zabawne(Cog):
         elif not question.endswith('?'):
             await ctx.send(embed=error_em('Pytania kończą się znakiem zapytania.'))
         elif len(question) < 10:
-            await ctx.sedn(embed=error_em('Pytanie jest zbyt krótkie.'))
+            await ctx.send(embed=error_em('Pytanie jest zbyt krótkie.'))
         else:
             while True:
                 result = choice([
