@@ -60,12 +60,14 @@ async def error_msg(ctx, error):
 
 bot.error_msg = error_msg
 
-cogs = (
-    'GameMaster.cogs.warny',
-    'GameMaster.cogs.czyszczenie',
-    'GameMaster.cogs.losowe',
-    'GameMaster.cogs.podstawowe'
-)
+cogs = [f'GameMaster.cogs.{cog}' for cog in [
+    'warny',
+    'czyszczenie',
+    'losowe',
+    'podstawowe',
+    'zabawne'
+]]
+
 for cog in cogs:
     p = '[COGS]'
     try:
