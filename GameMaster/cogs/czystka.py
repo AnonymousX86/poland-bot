@@ -6,7 +6,7 @@ from GameMaster.templates.basic import info_em, error_em, success_em, please_wai
 from GameMaster.utils.database.purge import *
 
 
-class Purge(Cog):
+class Czystka(Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -129,4 +129,4 @@ class Purge(Cog):
 
 
 def setup(bot):
-    bot.add_cog(Purge(bot))
+    bot.add_cog(Czystka(bot))
