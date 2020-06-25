@@ -3,7 +3,7 @@ from discord import Forbidden, HTTPException
 from discord.ext.commands import Cog, command, has_permissions, bot_has_permissions
 
 from GameMaster.templates.basic import info_em, error_em, success_em, please_wait_em
-from GameMaster.utils.database import purge_enabled, purge_settings, purge_enable, purge_disable
+from GameMaster.utils.database.purge import *
 
 
 class Purge(Cog):
