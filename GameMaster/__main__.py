@@ -60,7 +60,7 @@ if __name__ == '__main__':
             'czystka',
             'losowe',
             'podstawowe',
-            'poziomy',
+            'punkty',
             'warny',
             'zabawne'
         ]]:
