@@ -24,7 +24,7 @@ class Warny(Cog):
     async def warn(self, ctx, user_id=None, *, reason='Brak'):
         if user_id is not None:
             user_id = check_mention(user_id)
-            if type(user_id) is int:
+            if user_id:
                 user = self.bot.get_user(user_id)
                 if user is not None:
                     warns = get_warn(user_id)
@@ -139,7 +139,7 @@ class Warny(Cog):
                 if reason is not None:
                     if len(reason) <= 30:
                         user_id = check_mention(user_id)
-                        if type(user_id) is int:
+                        if user_id:
                             user = self.bot.get_user(user_id)
                             if user is not None:
                                 update_warn(user_id, reason)
@@ -198,7 +198,7 @@ class Warny(Cog):
     async def dwarn(self, ctx, user_id=None):
         if user_id is not None:
             user_id = check_mention(user_id)
-            if type(user_id) is int:
+            if user_id:
                 del_warns(user_id)
                 user = self.bot.get_user(user_id)
                 member = ctx.guild.get_member(user_id)

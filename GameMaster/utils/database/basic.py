@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime, timezone, timedelta
-from typing import Tuple
+from typing import Tuple, List
 
 from psycopg2 import connect
 
@@ -11,7 +11,7 @@ def now():
     return datetime.now(timezone(timedelta(hours=1)))
 
 
-def execute(query: str, args=None) -> Tuple[Tuple]:
+def execute(query: str, args: List = None) -> Tuple[Tuple]:
     if args is None:
         args = []
     with connect(get_db_url(), sslmode='require') as conn:

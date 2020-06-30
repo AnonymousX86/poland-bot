@@ -6,16 +6,21 @@ warn_roles_ids = {
 }
 
 
-def check_mention(user_id: str) -> int or str:
-    if len(user_id) == 21:
-        user_id = user_id[2:-1]
-    elif len(user_id) == 22:
-        user_id = user_id[3:-1]
-    if len(user_id) == 18:
+def check_mention(arg: str) -> int:
+    if len(arg) == 21:
+        arg = arg[2:-1]
+
+    elif len(arg) == 22:
+        arg = arg[3:-1]
+
+    if len(arg) == 18:
         try:
-            user_id = int(user_id)
+            user_id = int(arg)
         except ValueError:
-            pass
+            user_id = 0
+    else:
+        user_id = 0
+
     return user_id
 
 
