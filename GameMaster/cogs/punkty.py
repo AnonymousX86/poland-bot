@@ -2,8 +2,10 @@
 from discord.ext.commands import Cog, command, has_permissions, bot_has_permissions
 
 from GameMaster.templates.basic import error_em, success_em
-from GameMaster.templates.points import profile_em, ranking_em
-from GameMaster.utils.database.points import get_points, add_points, remove_points, get_all_points
+from GameMaster.templates.points import ranking_em
+from GameMaster.templates.users import profile_em
+from GameMaster.utils.database.points import add_points, remove_points, get_all_points
+from GameMaster.utils.ranking import nth_place
 from GameMaster.utils.users import check_mention
 
 
@@ -21,8 +23,7 @@ class Punkty(Cog):
         if user_id:
             member = ctx.guild.get_member(user_id)
             if member:
-                points = get_points(user_id)
-                await ctx.send(embed=profile_em(member, points))
+                await ctx.send(embed=profile_em(member))
             else:
                 await ctx.send(embed=error_em('Taki użytkownik nie znajduje się na tym serwerze.'))
         else:
@@ -41,7 +42,7 @@ class Punkty(Cog):
             await ctx.send(embed=error_em('Nie podałeś użytkownika.'))
 
         elif not option:
-            await ctx.send(ebmed=error_em('Nie podałeś opcji.'))
+            await ctx.send(embed=error_em('Nie podałeś opcji.'))
 
         elif option not in ['+', '-']:
             await ctx.send(embed=error_em('Błędna opcja.'))
@@ -79,12 +80,12 @@ class Punkty(Cog):
     async def ranking(self, ctx):
         points = get_all_points()
         text = ''
-        for i in points:
-            if i[1]:
-                try:
-                    text += f'{ctx.guild.get_member(i[0]).mention}  -  {i[1]}\n'
-                except AttributeError:
-                    text += f'`{i[0]}`  -  {i[1]}\n'
+        for i, p in enumerate(points, start=1):
+            if p[1]:
+                member = ctx.guild.get_member(p[0]).mention
+                if not member:
+                    member = p[0]
+                text += f'{nth_place(i)} {member}  -  {p[1]}\n'
         await ctx.send(embed=ranking_em(text))
 
 
