@@ -3,9 +3,10 @@ from discord import Forbidden, HTTPException
 from discord.ext.commands import Cog, command, has_permissions, bot_has_permissions
 
 from GameMaster.templates.basic import success_em, error_em, please_wait_em
-from GameMaster.templates.other import warns_em
+from GameMaster.templates.warns import warns_em
 from GameMaster.utils.database.warns import *
 from GameMaster.utils.users import *
+from settings import warn_roles_ids
 
 
 class Warny(Cog):
@@ -36,7 +37,7 @@ class Warny(Cog):
                     if count <= 3:
                         member = ctx.guild.get_member(user_id)
                         try:
-                            await member.add_roles(ctx.guild.get_role(warn_roles_ids[count]))
+                            await member.add_roles(ctx.guild.get_role(warn_roles_ids()[count]))
                         except AttributeError:
                             pass
                         await ctx.send(embed=success_em(
@@ -163,7 +164,7 @@ class Warny(Cog):
                         count += 1
                         for role in range(3):
                             try:
-                                warn_role = ctx.guild.get_role(warn_roles_ids[role + 1])
+                                warn_role = ctx.guild.get_role(warn_roles_ids()[role + 1])
                                 if role < record[1]:
                                     await member.add_roles(
                                         warn_role,
@@ -205,7 +206,7 @@ class Warny(Cog):
                 if member:
                     for i in range(3):
                         try:
-                            await member.remove_roles(ctx.guild.get_role(warn_roles_ids[i + 1]))
+                            await member.remove_roles(ctx.guild.get_role(warn_roles_ids()[i + 1]))
                         except AttributeError:
                             pass
                 await ctx.send(embed=success_em(
