@@ -37,11 +37,7 @@ def get_all_points(limit=10) -> List:
         'SELECT user_id, points FROM users LIMIT %s;',
         [limit]
     )
-    result = []
-    if points:
-        for item in points:
-            result.append([item[0], item[1]])
-    return result
+    return [[item[0], item[1]] for item in points] if points else []
 
 
 def manage_points(uid: int, points: int):
