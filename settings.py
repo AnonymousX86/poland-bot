@@ -5,6 +5,14 @@ from os import getenv
 load_dotenv()
 
 
+def warn_roles_ids() -> Dict:
+    return {
+        1: 713401249797505135,
+        2: 713401427929858069,
+        3: 713401508292591777
+    }
+
+
 def get_bot_token() -> str:
     return getenv('BOT_TOKEN')
 

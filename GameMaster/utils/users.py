@@ -1,11 +1,4 @@
 # -*- coding: utf-8 -*-
-warn_roles_ids = {
-    1: 713401249797505135,
-    2: 713401427929858069,
-    3: 713401508292591777
-}
-
-
 def check_mention(arg: str) -> int:
     if len(arg) == 21:
         arg = arg[2:-1]
