@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from random import seed, randint, choice
+from re import compile as re_compile
 
 from discord.ext.commands import Cog, command
 
 from GameMaster.templates.basic import error_em
+from GameMaster.templates.colors import color_em
 from GameMaster.templates.random import eight_ball_em, rate_em
 
 
@@ -85,6 +87,22 @@ class Zabawne(Cog):
             seed(arg)
             ocena = randint(1, 10)
             await ctx.send(embed=rate_em(arg, ocena))
+
+    @command(
+        name='kolor',
+        brief='Pokazuje informacje na temat danego koloru.',
+        help='Dostępne formaty kolorów to:\n'
+             ' - RGB (#FFFFFF)',
+        usage='<kolor>',
+        aliases=['color']
+    )
+    async def color(self, ctx, color):
+        if not color:
+            await ctx.send(embed=error_em('Nie podałeś(aś) koloru.'))
+        elif not re_compile('#[a-f0-9]{6}').fullmatch(color.lower()):
+            await ctx.send(embed=error_em('Błędny format koloru.'))
+        else:
+            await ctx.send(embed=color_em(color))
 
 
 def setup(bot):
