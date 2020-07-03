@@ -72,12 +72,12 @@ class Zabawne(Cog):
             await ctx.send(embed=eight_ball_em(result))
 
     @command(
-        name='oceń',
+        name='ocena',
         brief='Wystawia ocenę.',
         description='Wystawia ocenę z zakresu od 1 do 10.',
         help='Ten sam przedmiot zawsze otrzyma taką samą ocenę.',
         usage='<przedmiot>',
-        aliases=['rate']
+        aliases=['rate', 'oceń']
     )
     async def rate(self, ctx, *, arg=None):
         if not arg:
