@@ -27,6 +27,7 @@ class Zabawne(Cog):
             await ctx.send(embed=error_em('Pytanie jest zbyt krótkie.'))
         else:
             while True:
+                seed(question.lower())
                 result = choice([
                     'Jasne że tak',
                     'Może lepiej nie',
@@ -34,7 +35,7 @@ class Zabawne(Cog):
                     'Też nie wiem',
                     'Lepiej spytać sąsiada',
                     'Admin mówi że tak',
-                    'Tak, ale Mikołajowi się to nie spodoba',
+                    'Tak, ale św. Mikołajowi się to nie spodoba',
                     'Teoretycznie tak, a praktycznie nie',
                     'Trudne pytanie, muszę się chwilę zastanowić',
                     'A co za różnica',
@@ -54,11 +55,10 @@ class Zabawne(Cog):
                     'Chyba nie myślisz, że serio pomogę',
                     'A co zrobiłby Jedi',
                     'To morderca',
-                    'Mój kontakt mówi, że nie, ale również mówi, że Duda wygra',
                     'Żartujesz... Prawda?',
                     'Lepiej zapytaj się mnie, czy mnie to obchodzi',
                     'Na 100%',
-                    'Tak, ale zrób to będąc nawalonym jak tylko potrafisz',
+                    'Tak, ale zrób to będąc nawalonym tak jak tylko potrafisz',
                     'Nie mogę teraz powiedzieć',
                     'Zależy',
                     'To nie jest OK',
