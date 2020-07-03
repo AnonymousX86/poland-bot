@@ -4,8 +4,8 @@ from random import randint, choice
 from discord.ext.commands import Cog, command
 
 from GameMaster.templates.basic import error_em
-from GameMaster.templates.other import member_em
 from GameMaster.templates.random import dice_em, choose_em
+from GameMaster.templates.users import profile_em
 
 
 class Losowe(Cog):
@@ -70,12 +70,12 @@ class Losowe(Cog):
             role = ctx.guild.default_role
 
         if member:
-            await ctx.send(mebed=member_em(member))
+            await ctx.send(mebed=profile_em(member))
         elif role:
             possibles = [member for member in ctx.guild.members if role in member.roles]
             if possibles:
                 await ctx.send(
-                    embed=member_em(choice(possibles)).set_footer(text=f'Wylosowany(a) z grupy {role.name}.'))
+                    embed=profile_em(choice(possibles)).set_footer(text=f'Wylosowany(a) z grupy {role.name}.'))
             else:
                 await ctx.send(embed=error_em(f'Nie mogę znaleźć nikogo z rolą {role.mention}.'))
         else:
