@@ -9,7 +9,7 @@ from nest_asyncio import apply as async_apply
 
 from GameMaster.templates.basic import error_em
 from GameMaster.utils.database.basic import check_connection
-from settings import get_bot_token
+from settings import get_bot_token, bot_version
 
 
 async def error_msg(ctx, error):
@@ -80,6 +80,7 @@ if __name__ == '__main__':
         bot.history = {
             'last_8ball': ''
         }
+        bot.version = bot_version()
 
 
     bot.run(get_bot_token())

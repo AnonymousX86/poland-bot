@@ -11,3 +11,7 @@ def get_bot_token() -> str:
 
 def get_db_url() -> str:
     return getenv('DATABASE_URL')
+
+
+def bot_version() -> str:
+    return '1.0.0'
