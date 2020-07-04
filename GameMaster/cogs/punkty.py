@@ -37,6 +37,7 @@ class Punkty(Cog):
     @command(
         name='punkty',
         brief='Zarządza punktami.',
+        help='Dostępne opcje to "+" (dodawanie) i "-" (odejmowanie).',
         usage='<użytkownik> <opcja> <punkty>',
         aliases=['points', 'pkt']
     )
