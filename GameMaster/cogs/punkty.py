@@ -81,7 +81,7 @@ class Punkty(Cog):
         description='Pokazuje użytkowników z największą ilością punktów.'
     )
     async def ranking(self, ctx):
-        points = sort_nested(get_all_points())
+        points = sort_nested(get_all_points(), reversed_=True)
         text = ''
         for i, p in enumerate(points, start=1):
             member = ctx.guild.get_member(p[0])
