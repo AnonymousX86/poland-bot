@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
+from discord import Member
 from discord.ext.commands import Cog, command, has_permissions, bot_has_permissions
 
 from GameMaster.templates.basic import error_em, success_em
 from GameMaster.templates.points import ranking_em
 from GameMaster.templates.users import profile_em
 from GameMaster.utils.database.points import add_points, remove_points, get_all_points
+from GameMaster.utils.database.users import del_user, add_user
 from GameMaster.utils.general import sort_nested
 from GameMaster.utils.ranking import nth_place
 from GameMaster.utils.users import check_mention
@@ -89,6 +91,18 @@ class Punkty(Cog):
                 member = member.mention
             text += f'{nth_place(i)} {member}  -  {p[1]}\n'
         await ctx.send(embed=ranking_em(text))
+
+    @Cog.listener(
+        name='on_member_remove'
+    )
+    async def db_profile_remover(self, member: Member):
+        del_user(member.id)
+
+    @Cog.listener(
+        name='on_member_join'
+    )
+    async def db_profile_adder(self, member: Member):
+        add_user(member.id)
 
 
 def setup(bot):
