@@ -23,11 +23,11 @@ class Warny(Cog):
     @has_permissions(ban_members=True)
     @bot_has_permissions(ban_members=True)
     async def warn(self, ctx, user_id=None, *, reason='Brak'):
-        if user_id is not None:
+        if user_id:
             user_id = check_mention(user_id)
             if user_id:
                 user = self.bot.get_user(user_id)
-                if user is not None:
+                if user:
                     warns = get_warn(user_id)
                     if len(warns) > 0:
                         count = warns[0][1] + 1
