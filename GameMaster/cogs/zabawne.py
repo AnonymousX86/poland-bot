@@ -74,8 +74,7 @@ class Zabawne(Cog):
     @command(
         name='ocena',
         brief='Wystawia ocenę.',
-        description='Wystawia ocenę z zakresu od 1 do 10.',
-        help='Ten sam przedmiot zawsze otrzyma taką samą ocenę.',
+        description='Wystawia ocenę z zakresu od 1 do 10. Ten sam przedmiot zawsze otrzyma taką samą ocenę.',
         usage='<przedmiot>',
         aliases=['rate', 'oceń']
     )
