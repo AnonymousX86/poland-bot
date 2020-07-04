@@ -5,6 +5,7 @@ from GameMaster.templates.basic import error_em, success_em
 from GameMaster.templates.points import ranking_em
 from GameMaster.templates.users import profile_em
 from GameMaster.utils.database.points import add_points, remove_points, get_all_points
+from GameMaster.utils.general import sort_nested
 from GameMaster.utils.ranking import nth_place
 from GameMaster.utils.users import check_mention
 
@@ -78,14 +79,15 @@ class Punkty(Cog):
         description='Pokazuje użytkowników z największą ilością punktów.'
     )
     async def ranking(self, ctx):
-        points = get_all_points()
+        points = sort_nested(get_all_points())
         text = ''
         for i, p in enumerate(points, start=1):
-            if p[1]:
-                member = ctx.guild.get_member(p[0]).mention
-                if not member:
-                    member = p[0]
-                text += f'{nth_place(i)} {member}  -  {p[1]}\n'
+            member = ctx.guild.get_member(p[0])
+            if not member:
+                member = f'`{p[0]}`'
+            else:
+                member = member.mention
+            text += f'{nth_place(i)} {member}  -  {p[1]}\n'
         await ctx.send(embed=ranking_em(text))
 
 
