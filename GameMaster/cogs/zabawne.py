@@ -80,7 +80,7 @@ class Zabawne(Cog):
     )
     async def rate(self, ctx, *, arg=None):
         if not arg:
-            await ctx.send(embed=error_em('Musisz podać rzecz do ocenienia!'))
+            await ctx.send(embed=error_em('Musisz podać rzecz do ocenienia.'))
         else:
             arg = arg.lower()
             seed(arg)
