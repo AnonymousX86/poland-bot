@@ -7,4 +7,4 @@ def nth_place(place: int) -> str:
     elif place == 3:
         return ':third_place:'
     else:
-        return str(place)
+        return f'{place})'
