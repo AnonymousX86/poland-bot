@@ -110,3 +110,24 @@ def rules_em(point: int) -> Embed:
             description=get_rule(point),
             color=c
         )
+
+
+def invite_em() -> Embed:
+    return Embed(
+        title=':incoming_envelope: Zaproszenie',
+        description='\u200b',
+        color=Color.blue()
+    ).add_field(
+        name='Oto link',
+        value='https://discord.gg/AwfCZJB'
+    )
+
+
+def github_em() -> Embed:
+    return Embed(
+        title=':man_technologist: GitHub',
+        color=Color.darker_grey()
+    ).add_field(
+        name='Link',
+        value='https://github.com/AnonymousX86/poland-bot'
+    )
