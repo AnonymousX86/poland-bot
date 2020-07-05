@@ -2,6 +2,8 @@
 from discord import Color, Embed, Guild
 from discord.ext.commands import Bot
 
+from GameMaster.utils.regulamin import get_rule
+
 
 def error_em(text, title=':red_circle: Błąd!', color=Color.red()) -> Embed:
     return Embed(
@@ -83,3 +85,24 @@ def guild_info_em(guild: Guild):
     ).set_thumbnail(
         url=guild.icon_url
     )
+
+
+def rules_em(point: int) -> Embed:
+    t = ':scroll: Regulamin'
+    c = Color.blurple()
+    if not point:
+        return Embed(
+            title=t,
+            description='Znajdziesz go na kanale <#711992615033372712>.',
+            color=c
+        ).add_field(
+            name='Rada',
+            value='Wpisz punkt regulaminu, aby go zobaczyć. Np: `$regulamin 1`\n'
+                  'Pamiętaj, że nieznajomość regulaminu, nie zwalnia z jego przestrzegania.'
+        )
+    else:
+        return Embed(
+            title=t,
+            description=get_rule(point),
+            color=c
+        )

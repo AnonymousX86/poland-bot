@@ -4,7 +4,8 @@ from datetime import datetime as d
 from discord import HTTPException, NotFound
 from discord.ext.commands import Cog, command, has_permissions, bot_has_permissions
 
-from GameMaster.templates.basic import info_em, error_em, success_em, bot_info_em, guild_info_em
+from GameMaster.templates.basic import info_em, error_em, success_em, bot_info_em, guild_info_em, rules_em, invite_em, \
+    github_em
 from GameMaster.templates.utils import ping_em
 from GameMaster.utils.datetime import utc_to_local, delta_time
 from GameMaster.utils.users import check_mention
@@ -131,6 +132,38 @@ class Podstawowe(Cog):
                         await ctx.send(embed=error_em('Błąd podczas odbanowania.'))
                     else:
                         await ctx.send(success_em(f'Pomyślnie odbanowano **{user}**.'))
+
+    @command(
+        name='regulamin',
+        brief='Wyświetla punkt regulaminu.',
+        help='Przy braku podania punktu, wyświetlany jest kanał z regulaminem i pomoc jak używać komendy.',
+        usage='[punkt]',
+        aliases=['reg']
+    )
+    async def regulamin(self, ctx, point=None):
+        try:
+            point = int(point)
+        except TypeError:
+            point = None
+        except ValueError:
+            point = None
+        await ctx.send(embed=rules_em(point))
+
+    @command(
+        name='zaproszenie',
+        brief='Pokazuje permanentny link zaproszeniowy.',
+        aliases=['invite']
+    )
+    async def invite(self, ctx):
+        await ctx.send(embed=invite_em())
+
+    @command(
+        name='github',
+        brief='Pokazuje link do kodu źródłowego bota.',
+        aliases=['kod']
+    )
+    async def github(self, ctx):
+        await ctx.send(embed=github_em())
 
 
 def setup(bot):
