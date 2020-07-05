@@ -48,12 +48,16 @@ def bot_info_em(bot: Bot) -> Embed:
     ).add_field(
         name='Wersja',
         value=bot.version or 'Nieznana'
+    ).add_field(
+        name='Kod źródłowy',
+        value='GitHub: <https://github.com/AnonymousX86/poland-bot>',
+        inline=False
     ).set_thumbnail(
         url=bot.user.avatar_url
     )
 
 
-def guild_info_em(guild: Guild):
+def guild_info_em(guild: Guild) -> Embed:
     return Embed(
         title=guild.name,
         description=guild.description or '\u200b',

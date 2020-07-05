@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+_bot_version = '1.0.0'
+
 
 def warn_roles_ids() -> Dict:
     return {
@@ -24,4 +26,4 @@ def get_db_url() -> str:
 
 
 def bot_version() -> str:
-    return '1.0.0'
+    return _bot_version

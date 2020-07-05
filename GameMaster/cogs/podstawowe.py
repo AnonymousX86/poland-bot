@@ -26,7 +26,7 @@ class Podstawowe(Cog):
     @command(
         name='serwer',
         brief='Informacje na temat serwera.',
-        aliases=['serverinfo', 'guildinfo']
+        aliases=['server', 'serverinfo', 'guildinfo']
     )
     async def guild_info(self, ctx):
         await ctx.send(embed=guild_info_em(ctx.guild))
