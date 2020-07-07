@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from random import randint, choice
+from typing import Union
 
+from discord import Role
 from discord.ext.commands import Cog, command
 
 from GameMaster.templates.basic import error_em
@@ -47,39 +49,24 @@ class Losowe(Cog):
         description='Wyświetlane są nazwa, zdjęcie, status i nick losowego użytkownika z serwera.',
         usage='[rola|ID roli]'
     )
-    async def losowy(self, ctx, arg=None):
-        role_id = 0
-        member = None
-
-        if arg:
-            # Role ID only
-            if len(arg) == 18:
-                try:
-                    role_id = int(arg)
-                except ValueError:
-                    pass
-            # Role mention
-            elif len(arg) == 21:
-                role_id = int(arg[3:-1])
-            role = ctx.guild.get_role(role_id)
+    async def losowy(self, ctx, arg: Union[Role, int]):
+        if type(arg) is int:
+            role = ctx.guild.get_role(arg)
             if not role:
-                # User mention
-                if len(arg) == 22:
-                    member = ctx.guild.get_member(int(arg[3:-1]))
-        else:
-            role = ctx.guild.default_role
-
-        if member:
-            await ctx.send(mebed=profile_em(member))
-        elif role:
-            possibles = [member for member in ctx.guild.members if role in member.roles]
-            if possibles:
-                await ctx.send(
-                    embed=profile_em(choice(possibles)).set_footer(text=f'Wylosowany(a) z grupy {role.name}.'))
+                await ctx.send(embed=error_em('Błędny format komendy.'))
             else:
-                await ctx.send(embed=error_em(f'Nie mogę znaleźć nikogo z rolą {role.mention}.'))
-        else:
+                arg = role
+        if type(arg) is not Role:
+            await ctx.send(embed=error_em('Błędny format komendy.'))
+        elif arg not in ctx.guild.roles:
             await ctx.send(embed=error_em('Nie ma takiej roli.'))
+        else:
+            possibles = [member for member in ctx.guild.members if arg in member.roles]
+            if not possibles:
+                await ctx.send(embed=error_em(f'Nie mogę znaleźć nikogo z rolą **{arg.name}**.'))
+            else:
+                await ctx.send(embed=profile_em(
+                    choice(possibles)).set_footer(text=f'Wylosowany(a) z grupy {arg.name}.'))
 
     @command(
         name='wybierz',
