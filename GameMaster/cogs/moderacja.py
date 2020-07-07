@@ -37,6 +37,10 @@ class Moderacja(Cog):
                     else:
                         await ctx.send(success_em(f'Pomyślnie wyrzucono **{member}**.'))
 
+    @kick.error
+    async def kick_error(self, ctx, error):
+        await self.bot.error_msg(ctx, error)
+
     @has_permissions(ban_members=True)
     @bot_has_permissions(ban_members=True)
     @command(
@@ -62,6 +66,10 @@ class Moderacja(Cog):
                         await ctx.send(embed=error_em('Błąd podczas banowania.'))
                     else:
                         await ctx.send(success_em(f'Pomyślnie zbanowano **{member}**.'))
+
+    @ban.error
+    async def ban_error(self, ctx, error):
+        await self.bot.error_msg(ctx, error)
 
     @has_permissions(ban_members=True)
     @bot_has_permissions(ban_members=True)
@@ -89,6 +97,10 @@ class Moderacja(Cog):
                         await ctx.send(embed=error_em('Błąd podczas odbanowania.'))
                     else:
                         await ctx.send(success_em(f'Pomyślnie odbanowano **{user}**.'))
+
+    @unban.error
+    async def unban_error(self, ctx, error):
+        await self.bot.error_msg(ctx, error)
 
     @Cog.listener(
         name='on_message_delete'
