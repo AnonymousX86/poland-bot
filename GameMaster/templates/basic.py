@@ -131,3 +131,11 @@ def github_em() -> Embed:
         name='Link',
         value='https://github.com/AnonymousX86/poland-bot'
     )
+
+
+def changelog_em() -> Embed:
+    return Embed(
+        title=':gear: Changelog',
+        description='https://github.com/AnonymousX86/poland-bot/blob/master/CHANGELOG.md#changelog',
+        color=Color.light_grey()
+    )

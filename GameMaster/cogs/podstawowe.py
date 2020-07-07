@@ -4,8 +4,8 @@ from datetime import datetime as d
 from discord import HTTPException, NotFound
 from discord.ext.commands import Cog, command, has_permissions, bot_has_permissions
 
-from GameMaster.templates.basic import info_em, error_em, success_em, bot_info_em, guild_info_em, rules_em, invite_em, \
-    github_em
+from GameMaster.templates.basic import info_em, bot_info_em, guild_info_em, rules_em, invite_em, \
+    github_em, changelog_em
 from GameMaster.templates.utils import ping_em
 from GameMaster.utils.datetime import utc_to_local, delta_time
 from GameMaster.utils.users import check_mention
@@ -85,6 +85,13 @@ class Podstawowe(Cog):
     )
     async def github(self, ctx):
         await ctx.send(embed=github_em())
+
+    @command(
+        name='changelog',
+        brief='Zmiany bota.'
+    )
+    async def changelog(self, ctx):
+        await ctx.send(changelog_em())
 
 
 def setup(bot):
