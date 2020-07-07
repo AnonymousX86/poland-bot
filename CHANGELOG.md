@@ -2,15 +2,30 @@
 
 This file contains list of changes made to Poland Bot (Game Master).
 
-## [1.1.0] - 2020-07-04
-### Added
+## Released
+
+### [1.1.2] - 2020-07-07
+#### Added
+- "event" command.
+- "changelog" command.
+- Errors while user with no permissions try to ban, unban or kick another user.
+
+### [1.1.0] - 2020-07-04
+#### Added
 - "regulamin" command.
 - Messages' edit and delete watchers.
 - This changelog.
 
-## [1.0.0] - 2020-07-04
-### Added
+### [1.0.0] - 2020-07-04
+#### Added
 - All basic commands.
 
+## Unreleased
+
+### 1.1.1 - 2020-07-07
+#### Fixed
+- "losowy" command now works with role `@mention` not only ID.
+
+[1.1.2]: https://github.com/AnonymousX86/poland-bot/releases/tag/v1.1.2
 [1.1.0]: https://github.com/AnonymousX86/poland-bot/releases/tag/v1.1.0
 [1.0.0]: https://github.com/AnonymousX86/poland-bot/releases/tag/v1.0.0

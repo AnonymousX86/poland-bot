@@ -62,6 +62,7 @@ if __name__ == '__main__':
             'podstawowe',
             'punkty',
             'warny',
+            'wydarzenia',
             'zabawne'
         ]]:
             p = '[Cogs]'

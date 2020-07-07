@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-_bot_version = '1.1.0'
+_bot_version = '1.1.2'
 
 
 def warn_roles_ids() -> Dict:
@@ -15,6 +15,17 @@ def warn_roles_ids() -> Dict:
         2: 713401427929858069,
         3: 713401508292591777
     }
+
+
+def get_channel_id(name: str) -> int:
+    ids = {
+        'event': 726338994618499102,
+        'screeny': 725685134392819782
+    }
+    try:
+        return ids[name]
+    except KeyError:
+        return 0
 
 
 def get_bot_token() -> str:
