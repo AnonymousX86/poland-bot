@@ -2,10 +2,11 @@
 from discord import Color, Embed, Guild
 from discord.ext.commands import Bot
 
+from GameMaster.templates.emoji import error_emoji, confirm_emoji
 from GameMaster.utils.regulamin import get_rule
 
 
-def error_em(text, title=':red_circle: Błąd!', color=Color.red()) -> Embed:
+def error_em(text, title=f'{error_emoji()} Błąd!', color=Color.red()) -> Embed:
     return Embed(
         title=title,
         description=text,
@@ -13,7 +14,7 @@ def error_em(text, title=':red_circle: Błąd!', color=Color.red()) -> Embed:
     )
 
 
-def success_em(text, title=':green_circle: Gotowe!', color=Color.green()) -> Embed:
+def success_em(text, title=f'{confirm_emoji()} Gotowe!', color=Color.green()) -> Embed:
     return Embed(
         title=title,
         description=text,
