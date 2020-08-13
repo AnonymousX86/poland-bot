@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-_bot_version = '1.1.3'
+_bot_version = '1.1.4'
 
 
 def warn_roles_ids() -> Dict:

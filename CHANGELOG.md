@@ -4,6 +4,16 @@ This file contains list of changes made to Poland Bot (Game Master).
 
 ## Released
 
+### [1.1.4] - 2020-08-13
+### Added
+- More precise output of "points" command.
+### Fixed
+- "ranking" shows only users with at least 1 point.
+- Edit and delete messages' watcher works better.
+- "8ball" command now do not cause bot hang due to infinite loop.
+### Changed
+- Success and error embeds now have different emojis.
+
 ### [1.1.2] - 2020-07-07
 #### Added
 - "event" command.
@@ -30,6 +40,7 @@ This file contains list of changes made to Poland Bot (Game Master).
 #### Fixed
 - "losowy" command now works with role `@mention` not only ID.
 
+[1.1.4]: https://github.com/AnonymousX86/poland-bot/releases/tag/v1.1.4
 [1.1.2]: https://github.com/AnonymousX86/poland-bot/releases/tag/v1.1.2
 [1.1.0]: https://github.com/AnonymousX86/poland-bot/releases/tag/v1.1.0
 [1.0.0]: https://github.com/AnonymousX86/poland-bot/releases/tag/v1.0.0
