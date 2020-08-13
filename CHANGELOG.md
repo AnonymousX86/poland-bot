@@ -32,6 +32,10 @@ This file contains list of changes made to Poland Bot (Game Master).
 
 ## Unreleased
 
+### 1.1.5 - 2020-08-13
+#### Fixed
+- Changelog command now works properly.
+
 ### 1.1.3 - 2020-08-13
 #### Fixed
 - Updated `discord.py` framework.

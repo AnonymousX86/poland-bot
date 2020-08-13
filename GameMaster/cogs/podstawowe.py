@@ -89,7 +89,7 @@ class Podstawowe(Cog):
         brief='Zmiany bota.'
     )
     async def changelog(self, ctx):
-        await ctx.send(changelog_em())
+        await ctx.send(embed=changelog_em())
 
 
 def setup(bot):
