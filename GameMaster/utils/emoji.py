@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 def confirm_emoji() -> str:
-    return '<:check:743557960025768046>'
+    return '<:check:743558824778268773>'
 
 
 def error_emoji() -> str:
-    return '<:error:743557979135016960>'
+    return '<:error:743558848362578023>'
