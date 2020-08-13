@@ -1,4 +1,4 @@
-discord.py
-nest-asyncio
-psycopg2
-python-dotenv
+discord.py~=1.4.1
+nest-asyncio~=1.4.0
+psycopg2~=2.8.5
+python-dotenv~=0.14.0
