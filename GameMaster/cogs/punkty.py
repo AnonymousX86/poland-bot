@@ -41,14 +41,14 @@ class Punkty(Cog):
         usage='<użytkownik> <opcja> <punkty>',
         aliases=['points', 'pkt']
     )
-    async def punkty(self, ctx, user=None, option=None, amount=None):
+    async def punkty(self, ctx, user=None, option_human=None, amount=None):
         if not user:
             await ctx.send(embed=error_em('Nie podałeś użytkownika.'))
 
-        elif not option:
+        elif not option_human:
             await ctx.send(embed=error_em('Nie podałeś opcji.'))
 
-        elif option not in ['+', '-']:
+        elif option_human not in ['+', '-']:
             await ctx.send(embed=error_em('Błędna opcja.'))
 
         elif not amount:
@@ -71,10 +71,13 @@ class Punkty(Cog):
                     if not member:
                         await ctx.send(embed=error_em('Ten użytkownik nie znajduje się na tym serwerze.'))
                     else:
-                        func = add_points if option == '+' else remove_points
+                        func = add_points if option_human == '+' else remove_points
                         func(user_id, amount)
-                        await ctx.send(embed=success_em(f'Punkty użytkownika **{member.display_name}**,'
-                                                        f' zostały zaktualizowane.'))
+                        option_human = 'Dodano' if option_human == '+' else 'Odjęto'
+                        await ctx.send(embed=success_em(
+                            f'Punkty użytkownika **{member.display_name}** zostały zaktualizowane.\n'
+                            f'**{option_human}** punkty w ilości: **{amount}**.'
+                        ))
 
     @command(
         name='ranking',
