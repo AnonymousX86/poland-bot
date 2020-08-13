@@ -5,6 +5,7 @@ from discord.ext.commands import Cog, command, has_permissions, bot_has_permissi
 from GameMaster.templates.basic import error_em, success_em
 from GameMaster.templates.moderate import log_message_del_em, log_message_edit_em
 from GameMaster.utils.users import check_mention
+from settings import get_channel_id
 
 
 class Moderacja(Cog):
@@ -106,15 +107,17 @@ class Moderacja(Cog):
         name='on_message_delete'
     )
     async def message_delete_watch(self, message: Message):
-        log_channel: TextChannel = message.guild.get_channel(710550459236089868)
-        await log_channel.send(embed=log_message_del_em(message))
+        log_channel: TextChannel = message.guild.get_channel()
+        if log_channel:
+            await log_channel.send(embed=log_message_del_em(message))
 
     @Cog.listener(
         name='on_message_edit'
     )
     async def message_edit_watch(self, before: Message, after: Message):
-        log_channel: TextChannel = before.guild.get_channel(710550459236089868)
-        await log_channel.send(embed=log_message_edit_em(before, after))
+        log_channel: TextChannel = before.guild.get_channel(get_channel_id('log'))
+        if log_channel:
+            await log_channel.send(embed=log_message_edit_em(before, after))
 
 
 def setup(bot):
