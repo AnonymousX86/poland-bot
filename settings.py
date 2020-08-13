@@ -20,7 +20,8 @@ def warn_roles_ids() -> Dict:
 def get_channel_id(name: str) -> int:
     ids = {
         'event': 726338994618499102,
-        'screeny': 725685134392819782
+        'screeny': 725685134392819782,
+        'log': 710550459236089868
     }
     try:
         return ids[name]
