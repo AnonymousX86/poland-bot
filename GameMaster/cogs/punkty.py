@@ -93,7 +93,8 @@ class Punkty(Cog):
                 member = f'`{p[0]}`'
             else:
                 member = member.mention
-            text += f'{nth_place(i)} {member}  -  {p[1]}\n'
+            if p[1]:
+                text += f'{nth_place(i)} {member}  -  {p[1]}\n'
         await ctx.send(embed=ranking_em(text))
 
     @Cog.listener(
