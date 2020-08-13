@@ -78,10 +78,14 @@ if __name__ == '__main__':
             except Exception as e:
                 print(f'{p} {e.__class__.__name__}: {e}')
 
+        p = '[Bot]'
         bot.history = {
             'last_8ball': ''
         }
         bot.version = bot_version()
+        print(f'{p} Created history')
+
+        print(f'{p} Everything done!')
 
 
     bot.run(get_bot_token())

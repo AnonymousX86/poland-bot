@@ -22,6 +22,10 @@ This file contains list of changes made to Poland Bot (Game Master).
 
 ## Unreleased
 
+### 1.1.3 - 2020-08-13
+#### Fixed
+- Updated `discord.py` framework.
+
 ### 1.1.1 - 2020-07-07
 #### Fixed
 - "losowy" command now works with role `@mention` not only ID.
