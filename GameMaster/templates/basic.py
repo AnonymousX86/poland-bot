@@ -2,7 +2,7 @@
 from discord import Color, Embed, Guild
 from discord.ext.commands import Bot
 
-from GameMaster.templates.emoji import error_emoji, confirm_emoji
+from GameMaster.utils.emoji import error_emoji, confirm_emoji
 from GameMaster.utils.regulamin import get_rule
 
 
