@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from os import urandom
 from random import seed, randint, choice
 from re import compile as re_compile
 
@@ -28,8 +29,9 @@ class Zabawne(Cog):
         elif len(question) < 10:
             await ctx.send(embed=error_em('Pytanie jest zbyt krótkie.'))
         else:
+            control = ''
             while True:
-                seed(question.lower())
+                seed(question.lower() + control)
                 result = choice([
                     'Jasne że tak',
                     'Może lepiej nie',
@@ -69,6 +71,8 @@ class Zabawne(Cog):
                 if result != self.bot.history['last_8ball']:
                     self.bot.history['last_8ball'] = result
                     break
+                else:
+                    control += urandom(1).decode(encoding='utf-8')
             await ctx.send(embed=eight_ball_em(result))
 
     @command(
