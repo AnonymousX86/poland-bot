@@ -5,13 +5,13 @@ This file contains list of changes made to Poland Bot (Game Master).
 ## Released
 
 ### [1.1.4] - 2020-08-13
-### Added
+#### Added
 - More precise output of "points" command.
-### Fixed
+#### Fixed
 - "ranking" shows only users with at least 1 point.
 - Edit and delete messages' watcher works better.
 - "8ball" command now do not cause bot hang due to infinite loop.
-### Changed
+#### Changed
 - Success and error embeds now have different emojis.
 
 ### [1.1.2] - 2020-07-07
