@@ -32,6 +32,12 @@ This file contains list of changes made to Poland Bot (Game Master).
 
 ## Unreleased
 
+### 1.1.6 - 2020-08-15
+#### Added
+- "set" option to "punkty" command.
+#### Changed
+- "regulamin" embed text. Now it's more precise and fixed language.
+
 ### 1.1.5 - 2020-08-13
 #### Fixed
 - Changelog command now works properly.
