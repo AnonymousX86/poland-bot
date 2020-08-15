@@ -101,8 +101,8 @@ def rules_em(point: int) -> Embed:
             description='Znajdziesz go na kanale <#711992615033372712>.',
             color=c
         ).add_field(
-            name='Rada',
-            value='Wpisz punkt regulaminu, aby go zobaczyć. Np: `$regulamin 1`\n'
+            name='Używanie komendy',
+            value='Wpisz punkt regulaminu, aby go zobaczyć. Np: `$regulamin 1`.\n'
                   'Pamiętaj, że nieznajomość regulaminu, nie zwalnia z jego przestrzegania.'
         )
     else:
