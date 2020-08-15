@@ -59,3 +59,9 @@ def add_points(uid: int, points: int):
 
 def remove_points(uid: int, points: int):
     manage_points(uid, -points)
+
+
+def set_points(uid: int, points: int):
+    base_points = get_points(uid)
+    diff_points = points - base_points
+    manage_points(uid, diff_points)

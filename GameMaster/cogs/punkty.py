@@ -5,7 +5,7 @@ from discord.ext.commands import Cog, command, has_permissions, bot_has_permissi
 from GameMaster.templates.basic import error_em, success_em
 from GameMaster.templates.points import ranking_em
 from GameMaster.templates.users import profile_em
-from GameMaster.utils.database.points import add_points, remove_points, get_all_points
+from GameMaster.utils.database.points import add_points, remove_points, get_all_points, set_points
 from GameMaster.utils.database.users import del_user, add_user
 from GameMaster.utils.general import sort_nested
 from GameMaster.utils.ranking import nth_place
@@ -37,18 +37,21 @@ class Punkty(Cog):
     @command(
         name='punkty',
         brief='Zarządza punktami.',
-        help='Dostępne opcje to "+" (dodawanie) i "-" (odejmowanie).',
+        help='Dostępne opcje:\n'
+             '+ Dodawanie\n'
+             '- Odejmowanie\n'
+             '= Ustawianie',
         usage='<użytkownik> <opcja> <punkty>',
         aliases=['points', 'pkt']
     )
-    async def punkty(self, ctx, user=None, option_human=None, amount=None):
+    async def punkty(self, ctx, user=None, option=None, amount=None):
         if not user:
             await ctx.send(embed=error_em('Nie podałeś użytkownika.'))
 
-        elif not option_human:
+        elif not option:
             await ctx.send(embed=error_em('Nie podałeś opcji.'))
 
-        elif option_human not in ['+', '-']:
+        elif option not in ['+', '-', '=']:
             await ctx.send(embed=error_em('Błędna opcja.'))
 
         elif not amount:
@@ -71,9 +74,9 @@ class Punkty(Cog):
                     if not member:
                         await ctx.send(embed=error_em('Ten użytkownik nie znajduje się na tym serwerze.'))
                     else:
-                        func = add_points if option_human == '+' else remove_points
+                        func = add_points if option == '+' else remove_points if option == '-' else set_points
                         func(user_id, amount)
-                        option_human = 'Dodano' if option_human == '+' else 'Odjęto'
+                        option_human = "Dodano" if option == "+" else "Odjęto" if option == "-" else "Ustawiono"
                         await ctx.send(embed=success_em(
                             f'Punkty użytkownika **{member.display_name}** zostały zaktualizowane.\n'
                             f'**{option_human}** punkty w ilości: **{amount}**.'
